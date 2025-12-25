@@ -9,13 +9,17 @@ def transform_number_to_string(input_list: list):
     return ''.join(char_list)
 
 def shift_logic(ascii_code: int, shift_position: int):
+    shift_position = shift_position % 26 # use mod to handle case shift_position > 26
     res = ascii_code - shift_position
+    # if shifted value goes beyond 'A'
     if res < 65:
         res += 26
+    # if shifted value goes beyond 'Z'
+    if res > 90:
+        res -= 26
     return  res
 
 def decrypt_text(encrpted_text: str, k: int):
-    k = k % 26 # use mod to handle case k > 26
     ascii_list = transform_alphabet_to_number(encrpted_text)
     shift_list = [shift_logic(code, k) for code in ascii_list]
     print(shift_list)
