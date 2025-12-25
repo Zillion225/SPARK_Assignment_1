@@ -1,0 +1,16 @@
+3. What is level of priority and severity for this case and why you choose it?
+
+Answer:
+Severity: Critical
+
+Reasoning:
+Loss of Functionality: A core feature of the banking app (inter-bank transfer) is completely broken.
+Data Integrity/Security: The system is incorrectly rejecting valid credentials and, more importantly, locking user accounts (PIN locked).
+No Workaround: There is no alternative way for the user to complete the transfer within the app if their PIN is being rejected and subsequently locked.
+
+Priority: High
+
+Reasoning:
+Financial Impact: Failed transfers result in lost revenue and potential fees for the bank.
+Customer Trust: Locking a customer's account due to a system error causes high frustration and will likely flood the customer support center with calls.
+Blocker: This bug prevents users from finishing a primary journey, making the application unfit for production use.

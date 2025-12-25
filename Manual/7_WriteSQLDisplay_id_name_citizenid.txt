@@ -1,0 +1,7 @@
+Question:
+Please write a query to display the id , name and ci=zen who have registered date in 2022
+
+Answer:
+SELECT id, name, citizen 
+FROM Customers 
+WHERE registration_date >= '2022-01-01' AND registration_date < '2023-01-01'

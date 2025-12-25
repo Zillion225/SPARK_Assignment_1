@@ -1,0 +1,21 @@
+Question:
+Please write a query to display product id ,product name ,customer full name , customer
+citizen who have customer_id = '001110001'
+
+Answer:
+SELECT 
+    p.product_id, 
+    p.product_name, 
+    c.full_name, 
+    c.citizen
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+JOIN Products p ON o.product_id = p.product_id
+WHERE c.customer_id = '001110001'
+
+Explanation:
+1. Order: The Orders table functions as an intermediary. In typical system architectures, customers do not simply own products because the relationship is instead defined by the transaction of ordering them.
+
+2. JOIN Orders o ON c.customer_id = o.customer_id: Find all order records that belong to that specific customer. Now the database knows which orders were made, but it only sees product IDs (numbers), not names.
+
+3. JOIN Products p ON o.product_id = p.product_id: Use the product IDs found in the orders to look up the actual names in the Products table.

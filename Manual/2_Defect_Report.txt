@@ -1,0 +1,25 @@
+Issue Type: Bug
+Summary: Unable to log in with valid username and password
+Description:
+The application does not allow users to log in even when valid credentials are entered. This issue prevents users from accessing the system and blocks further usage and testing.
+
+Environment: UAT
+Steps to Reproduce:
+1. Open the application
+2. Navigate to the Login page
+3. Enter a valid username
+4. Enter the correct password
+5. Click the Login button
+
+Expected Result:
+The user should be successfully authenticated and redirected to the home page.
+
+Actual Result:
+The application fails to log in even though the entered username and password are correct.
+
+Priority: High
+Severity: Critical
+Frequency: Always
+
+Impact:
+Users are unable to access the system, resulting in a complete login blockage.

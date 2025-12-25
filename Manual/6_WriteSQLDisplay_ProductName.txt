@@ -1,0 +1,6 @@
+Question:
+Please write a query to display all of product name from table : Products
+
+Answer:
+SELECT product_name 
+FROM Products

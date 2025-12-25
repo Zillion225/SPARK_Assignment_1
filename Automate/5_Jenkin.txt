@@ -1,0 +1,48 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage('Checkout Code From Git') {
+            steps {
+                // Pull the latest code from the source control repository
+                echo 'Fetching source code...'
+                git branch: 'main', url: 'https://github.com/your-repo/robot-tests.git'
+            }
+        }
+
+        stage('Run Test Automate') {
+            steps {
+                // Execute Robot Framework tests and store results in 'results' directory
+                echo 'Executing Robot Framework automated tests...'
+                sh 'robot -d results tests/' 
+            }
+        }
+
+        stage('Send Result To Jenkins') {
+            steps {
+                // Publish the Robot Framework test report to the Jenkins UI
+                echo 'Processing test results...'
+                step([$class: 'RobotPublisher',
+                    outputPath: 'results',
+                    outputFileName: 'output.xml',
+                    reportFileName: 'report.html',
+                    logFileName: 'log.html'
+                ])
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Archive the HTML reports so they are accessible after the build finishes
+            echo 'Archiving test artifacts...'
+            archiveArtifacts artifacts: 'results/*.html', fingerprint: true
+        }
+        success {
+            echo 'Automation completed successfully.'
+        }
+        failure {
+            echo 'Automation failed. Please check the Robot Framework log.html'
+        }
+    }
+}
