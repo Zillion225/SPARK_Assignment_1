@@ -19,17 +19,16 @@ def shift_logic(ascii_code: int, shift_position: int):
         res -= 26
     return  res
 
-def decrypt_text(encrpted_text: str, k: int):
-    ascii_list = transform_alphabet_to_number(encrpted_text)
+def simpleCipher(encrypted: str, k: int):
+    ascii_list = transform_alphabet_to_number(encrypted)
     shift_list = [shift_logic(code, k) for code in ascii_list]
     print(shift_list)
     return transform_number_to_string(shift_list)
 
-
 def main():
     encrpyted_text = 'VTAOG'
     k = 2
-    decrypted_text = decrypt_text(encrpyted_text, k)
+    decrypted_text = simpleCipher(encrpyted_text, k)
     print(decrypted_text)
 
 if __name__=="__main__":
