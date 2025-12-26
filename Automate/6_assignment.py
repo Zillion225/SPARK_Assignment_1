@@ -22,7 +22,6 @@ def shift_logic(ascii_code: int, shift_position: int):
 def simpleCipher(encrypted: str, k: int):
     ascii_list = transform_alphabet_to_number(encrypted)
     shift_list = [shift_logic(code, k) for code in ascii_list]
-    print(shift_list)
     return transform_number_to_string(shift_list)
 
 def main():
